@@ -52,9 +52,9 @@ namespace visitor{
     public:
         explicit Array(v_ref data):_data(data){}
         template <typename V,typename... Args>
-        void visitor(V&& v,Args&&... args){
+        void accept(V&& v,Args&&... args){
             v.op(_data);
-            visitor(args...);
+            accept(args...);
         }
         void printArray(){
             for(size_t i = 0;i < SIZE; ++ i){
@@ -72,7 +72,7 @@ namespace visitor{
         virtual ~Array() = default;
 
     private:
-        void visitor(){}
+        void accept(){}
     };
     void setArray(int (&data)[SIZE],int val) {
         for (int &i : data) {
@@ -94,7 +94,7 @@ namespace visitor{
         Add add(data_2);
         Mul mul(data_3);
         Sub sub(data_4);
-        arr.visitor(add,mul,sub,sub,add,sub,mul);
+        arr.accept(add,mul,sub,sub,add,sub,mul);
         arr.printArray();
 
     }

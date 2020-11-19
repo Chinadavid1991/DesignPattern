@@ -1,8 +1,6 @@
-#include "TemplateMethod.h"
-
-
+#include "Command.h"
+#include <iostream>
+using namespace std;
 int main() {
-    ImageProcess process;
-    process.method();
-    return 0;
+    testCommand();
 }

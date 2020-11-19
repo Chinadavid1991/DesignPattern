@@ -34,5 +34,5 @@ private:
     cv::Mat read() override;
     void show(cv::Mat img) override;
 };
-
+void testTemplateMethod();
 #endif //DESIGNPATTERN_TEMPLATEMETHOD_H

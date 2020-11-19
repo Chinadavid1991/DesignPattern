@@ -13,3 +13,9 @@ void ImageProcess::show(cv::Mat img) {
     cv::imshow("show",img);
     cv::waitKey(0);
 }
+
+
+void testTemplateMethod(){
+    ImageProcess process;
+    process.method();
+}

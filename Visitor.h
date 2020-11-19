@@ -52,7 +52,7 @@ namespace visitor{
     public:
         explicit Array(v_ref data):_data(data){}
         template <typename V,typename... Args>
-        void visitor(V v,Args... args){
+        void visitor(V&& v,Args&&... args){
             v.op(_data);
             visitor(args...);
         }

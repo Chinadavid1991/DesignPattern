@@ -5,7 +5,7 @@
 #ifndef DESIGNPATTERN_VISITOR_H
 #define DESIGNPATTERN_VISITOR_H
 #include <iostream>
-
+//visitor + 可变模板
 namespace visitor{
     constexpr int SIZE = 100;
     using v_ref = int (&)[SIZE];

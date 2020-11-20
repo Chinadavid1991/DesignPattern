@@ -4,7 +4,7 @@
 #include "Iterator.h"
 void testIterator(){
     ArrayList<int> arr;
-    for(int i = 0;i < 1000;++i){
+    for(int i = 0;i < 256;++i){
         arr.add(i);
     }
     Iterator<int>& it =  arr.getIterator();

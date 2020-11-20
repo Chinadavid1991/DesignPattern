@@ -1,10 +1,6 @@
-#include "Visitor.h"
-
+#include "Iterator.h"
 using namespace std;
-using namespace visitor;
-
 
 int main() {
-    visitor::testVisitor();
-
+    testIterator();
 }

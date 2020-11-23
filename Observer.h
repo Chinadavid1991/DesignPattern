@@ -30,14 +30,20 @@ public:
 };
 
 class Child{
-    bool _cry = false;
+
+    int  _state = 0;
     std::vector<Observer*> _observers;
 public:
-    bool isCry() const{
-        return _cry;
+    enum {
+        sleep,
+        cry,
+        hungry
+    };
+    int getState() const{
+        return _state;
     }
     void onWake(){
-        _cry = true;
+        _state = hungry;
         Event event(*this,std::string("child cry"));
         for(Observer* o : _observers){
             o->actionOnEvent(event);
@@ -53,36 +59,36 @@ public:
 class Dad : public Observer{
 public:
     void actionOnEvent(Event& event) override {
-        if(event.getResource().isCry()){
+        if(event.getResource().getState() == event.getResource().hungry){
             feed();
         }
     }
     void feed(){
-        std::cout << "do feed" << std::endl;
+        std::cout << "Dad... do feed" << std::endl;
     }
 };
 
 class Mum : public Observer{
 public:
     void actionOnEvent(Event &event) override {
-        if(event.getResource().isCry()){
+        if(event.getResource().getState() == event.getResource().cry){
             hug();
         }
     }
     void hug(){
-        std::cout << "do hug" << std::endl;
+        std::cout << "Mum... do hug" << std::endl;
     }
 };
 
 class Dog : public Observer{
 public:
     void actionOnEvent(Event &event) override {
-        if(event.getResource().isCry()){
+        if(event.getResource().sleep == event.getResource().getState()){
             bark();
         }
     }
     void bark(){
-        std::cout << "do bark" << std::endl;
+        std::cout << "Dog... do bark" << std::endl;
     }
 };
 

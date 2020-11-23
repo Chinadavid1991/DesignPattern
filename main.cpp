@@ -1,9 +1,6 @@
-#include "ChainOfResponsibility.h"
-#include <iostream>
-#include <string>
-using namespace std;
+#include "Observer.h"
+
 
 int main() {
-    testChainOfResponsibility();
-
+    testObserver();
 }

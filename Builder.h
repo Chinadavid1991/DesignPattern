@@ -67,9 +67,9 @@ protected:
     Car* _car = nullptr;
 public:
     CarBuild(): _car(new Car()){}
-    virtual void buildWheel() = 0;
-    virtual void buildPlate() = 0;
-    virtual void buildBody() = 0;
+    virtual CarBuild* buildWheel() = 0;
+    virtual CarBuild* buildPlate() = 0;
+    virtual CarBuild* buildBody() = 0;
     Car* getMakedCar() const { return _car; }
 
     virtual ~ CarBuild(){
@@ -80,22 +80,22 @@ public:
 
 class Porsche:public CarBuild{
 public:
-    void buildWheel() override;
+    CarBuild* buildWheel() override;
 
-    void buildPlate() override;
+    CarBuild* buildPlate() override;
 
-    void buildBody() override;
+    CarBuild* buildBody() override;
 
     ~Porsche() override = default;
 };
 //变化的地方设计为抽象
 class Benz:public CarBuild{
 public:
-    void buildWheel() override;
+    CarBuild* buildWheel() override;
 
-    void buildPlate() override;
+    CarBuild* buildPlate() override;
 
-    void buildBody() override;
+    CarBuild* buildBody() override;
 
     ~Benz() override;
 };
@@ -107,10 +107,7 @@ public:
     void setCarBuild(CarBuild *carBuild);
 
     void makeCar(){
-        _carBuild->buildWheel();
-        _carBuild->buildPlate();
-        _carBuild->buildBody();
-        _carBuild->getMakedCar();
+        _carBuild->buildWheel()->buildPlate()->buildBody()->getMakedCar();
     }
 
 };

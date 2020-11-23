@@ -11,17 +11,31 @@ class Collection{
 public:
     virtual void add(const E& element) = 0;
     virtual int size() = 0;
+    virtual E& operator[](std::size_t x) = 0;
 };
 template <typename E>
-class Iterator{
+class Iteratorable{
 public:
     virtual bool hasNext() = 0;
     virtual E& next() = 0;
 };
 
 template <typename E>
-class ArrayList:public Collection<E>,public Iterator<E>{
+class ArrayList:public Collection<E>{
+    class Iterator : public Iteratorable<E>{
+        std::size_t _index = 0;
+        Collection<E>& _c;
+    public:
+        using Iter =  ArrayList::Iterator;
+        Iterator(size_t index, Collection<E> &c) : _index(index), _c(c) {}
+        bool hasNext() override {
+            return _index < _c.size();
+        }
 
+        E &next() override {
+            return _c[_index++];
+        }
+    };
 public:
     std::size_t _capacity = 1;
     ArrayList():_data(new E[_capacity]),_len(0){}
@@ -39,23 +53,19 @@ public:
     int size() override {
         return _len;
     }
-    bool hasNext() override {
-        return _index < _len;
+    E& operator[] (std::size_t x) override {
+        return _data[x];
     }
-    E &next() override {
-        return _data[_index++];
-    }
-    Iterator<E>& getIterator(){
-        _index = 0;
-        return *this;
+    Iterator GetIterator(){
+        return Iterator(0,*this);
     }
 private:
     E* _data = nullptr;
     size_t _len = 0;
-    std::size_t _index = 0;
+
 
 
 };
-void testIterator();
+
 
 #endif //DESIGNPATTERN_ITERATOR_H

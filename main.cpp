@@ -1,6 +1,9 @@
-#include "Iterator.h"
+#include "ChainOfResponsibility.h"
+#include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-    testIterator();
+    testChainOfResponsibility();
+
 }

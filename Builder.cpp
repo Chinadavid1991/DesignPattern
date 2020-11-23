@@ -8,29 +8,32 @@ using namespace std;
 
 
 
-void Porsche::buildWheel() {
+CarBuild* Porsche::buildWheel() {
     Wheel* wheel = _car->getWheel();
     wheel->setDiameter(200);
     wheel->setNum(4);
     cout << "building wheel has " << wheel->getNum() << \
             " wheels, every wheel's diameter is " << wheel->getDiameter() << endl;
+    return this;
 
 }
 
-void Porsche::buildPlate() {
+CarBuild* Porsche::buildPlate() {
     Plate* plate = _car->getPlate();
     plate->setHeavy(10000);
     plate->setHeight(2.5);
     plate->setWidth(10);
     cout << "building plate' heavy is "<< plate->getHeavy() << ", its height is " \
          << plate->getHeight() << ", its width is " << plate->getWidth() << endl;
+    return this;
 
 }
 
-void Porsche::buildBody() {
+CarBuild* Porsche::buildBody() {
     Body *body = _car->getBody();
     body->setColor("black");
     cout << "building body's color is " << body->getColor() << endl;
+    return this;
 }
 
 
@@ -89,27 +92,30 @@ void CarDirector::setCarBuild(CarBuild *carBuild) {
     _carBuild = carBuild;
 }
 
-void Benz::buildWheel() {
+CarBuild* Benz::buildWheel() {
     Wheel* wheel = _car->getWheel();
     wheel->setDiameter(250);
     wheel->setNum(4);
     cout << "building wheel has " << wheel->getNum() << \
             " wheels, every wheel's diameter is " << wheel->getDiameter() << endl;
+    return this;
 }
 
-void Benz::buildPlate() {
+CarBuild* Benz::buildPlate() {
     Plate* plate = _car->getPlate();
     plate->setHeavy(15000);
     plate->setHeight(3);
     plate->setWidth(15);
     cout << "building plate' heavy is "<< plate->getHeavy() << ", its height is " \
          << plate->getHeight() << ", its width is " << plate->getWidth() << endl;
+    return this;
 }
 
-void Benz::buildBody() {
+CarBuild* Benz::buildBody() {
     Body *body = _car->getBody();
     body->setColor("blue");
     cout << "building body's color is " << body->getColor() << endl;
+    return this;
 }
 
 Benz::~Benz() = default;

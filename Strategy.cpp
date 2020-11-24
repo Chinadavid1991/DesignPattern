@@ -3,7 +3,8 @@
 //
 
 #include "Strategy.h"
-
+#include <iostream>
+using namespace std;
 
 People::People(const std::string &name, size_t height, size_t age) : _name(name), _height(height), _age(age) {}
 
@@ -25,3 +26,15 @@ std::ostream &operator<<(std::ostream &os, const People &people) {
 }
 
 
+void testStrategy(){
+    People people[] = {People("jack",178,25),
+                       People("rose",165,23),
+                       People("xxx",170,30),
+                       People("aaa",180,20),
+                       People("bbb",170,28)};
+
+    BubbleSort(people,NameComporator());
+    for(People& p : people){
+        cout << p << endl;
+    }
+}

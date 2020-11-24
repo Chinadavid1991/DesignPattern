@@ -56,5 +56,5 @@ public:
     void execute() override;
     void undo() override;
 };
-void testCommand();
+void testThreadCommand();
 #endif //DESIGNPATTERN_THREADCOMMAND_H

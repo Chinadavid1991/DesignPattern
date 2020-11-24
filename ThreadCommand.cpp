@@ -88,7 +88,7 @@ void LightOn::undo() {
     }
 
 }
- void testCommand(){
+ void testThreadCommand(){
      Light light(false);
      LightOff off(&light);
      LightOn on(&light);

@@ -44,7 +44,7 @@ public:
     }
     void onWake(){
         _state = hungry;
-        Event event(*this,std::string("child cry"));
+        Event event(*this,std::string("hungry"));
         for(Observer* o : _observers){
             o->actionOnEvent(event);
         }
@@ -60,6 +60,7 @@ class Dad : public Observer{
 public:
     void actionOnEvent(Event& event) override {
         if(event.getResource().getState() == event.getResource().hungry){
+            std::cout << "baby is " << event.getName() << std::endl;
             feed();
         }
     }
@@ -72,6 +73,7 @@ class Mum : public Observer{
 public:
     void actionOnEvent(Event &event) override {
         if(event.getResource().getState() == event.getResource().cry){
+            std::cout << "baby is " << event.getName() << std::endl;
             hug();
         }
     }
@@ -84,6 +86,7 @@ class Dog : public Observer{
 public:
     void actionOnEvent(Event &event) override {
         if(event.getResource().sleep == event.getResource().getState()){
+            std::cout << "baby is " << event.getName() << std::endl;
             bark();
         }
     }

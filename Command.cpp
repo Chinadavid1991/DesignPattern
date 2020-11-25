@@ -60,10 +60,16 @@ void testCommand(){
     Insert in_1(c,Content("c++ program:"));
     Copy cp_1(c);
     Copy cp_2(c);
+    Copy cp_3(c);
+    Insert in_2(c,Content("c++ program:"));
 
     chain.add(&cp_1);
     chain.add(&in_1);
     chain.add(&cp_2);
+    chain.add(&cp_3);
+    chain.add(&in_2);
+
+
 
 
     chain.execute();

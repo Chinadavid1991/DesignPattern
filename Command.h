@@ -68,6 +68,7 @@ public:
     void add(Command* cmd){
         v_commands.push_back(cmd);
     }
+
 };
 void testCommand();
 
